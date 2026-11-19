@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#002755">
 <title>Você viu nossa campanha? · Rede D'Or Pernambuco</title>
-<meta name="description" content="Pesquisa rápida e anônima sobre a campanha Rede D'Or Pernambuco nas ruas.">
+<meta name="description" content="Pesquisa rápida e anônima sobre a campanha Rede D'Or Pernambuco.">
 <meta property="og:title" content="Você viu nossa campanha? · Rede D'Or Pernambuco">
 <meta property="og:description" content="Pesquisa rápida e anônima · menos de 1 minuto">
-<meta property="og:image" content="https://pesquisa-rededorpe.netlify.app/img/og.jpg">
+<meta property="og:image" content="img/og.jpg">
 <meta name="robots" content="noindex">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -74,7 +74,7 @@ h1 em{font-style:normal;color:var(--gold)}
 @keyframes in{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
 @keyframes inback{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
 
-.photo{position:relative;border-radius:var(--r-small) var(--r-big) var(--r-small) var(--r-big);overflow:hidden;background:#C9D3E3;box-shadow:0 8px 24px rgba(0,30,80,.12)}
+.photo,.radio{position:relative;border-radius:var(--r-small) var(--r-big) var(--r-small) var(--r-big);overflow:hidden;background:#C9D3E3;box-shadow:0 8px 24px rgba(0,30,80,.12)}
 .gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .gal::-webkit-scrollbar{display:none}
 .gal img{flex:none;width:100%;aspect-ratio:16/10;object-fit:cover;scroll-snap-align:center;display:block;cursor:zoom-in}
@@ -103,6 +103,26 @@ h1 em{font-style:normal;color:var(--gold)}
 .opt.sel .oi{background:var(--blue);color:#fff}
 .sep{height:1px;background:var(--line);margin:4px 2px}
 @media (hover:hover) and (pointer:fine){.opt:hover{border-color:#A9BDE3}.opt .k{display:inline-block}}
+
+
+/* lista de shoppings */
+.lista{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 0}
+.lista span{font-size:12.5px;font-weight:600;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 11px}
+/* rádio */
+.radio{position:relative;border-radius:var(--r-small) var(--r-big) var(--r-small) var(--r-big);background:linear-gradient(150deg,var(--blue),var(--navy) 70%);padding:54px 16px 16px;display:grid;gap:10px;box-shadow:0 8px 24px rgba(0,30,80,.12);overflow:hidden}
+.radio .r-ico{position:absolute;right:16px;top:12px;width:34px;height:34px;color:var(--cyan);opacity:.9}
+.radio .r-ico svg{width:100%;height:100%}
+.ap{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:10px 14px 10px 10px;color:#fff;transition:background .15s}
+.ap.on{background:rgba(255,255,255,.18);border-color:var(--cyan)}
+.ap-btn{flex:none;width:48px;height:48px;border-radius:50%;background:#fff;color:var(--navy);display:grid;place-items:center}
+.ap-btn svg{width:22px;height:22px}
+.ap.on .ap-btn{background:var(--cyan)}
+.ap-body{flex:1;min-width:0}
+.ap-top{display:flex;justify-content:space-between;align-items:baseline;font-size:14.5px}
+.ap-t{font-size:12px;color:#C8D6EF;font-variant-numeric:tabular-nums}
+.ap-bar{height:16px;display:flex;align-items:center;cursor:pointer;margin-top:4px;position:relative}
+.ap-bar:before{content:"";position:absolute;left:0;right:0;height:5px;border-radius:5px;background:rgba(255,255,255,.22)}
+.ap-bar i{position:relative;height:5px;border-radius:5px;background:var(--cyan);width:0}
 
 /* ---------- STATUS SCREENS ---------- */
 .status{background:linear-gradient(160deg,var(--blue) 0%,var(--navy) 60%,var(--navy2) 100%);color:#fff;position:relative;overflow:hidden}
@@ -151,12 +171,12 @@ h1 em{font-style:normal;color:var(--gold)}
     <div class="w-body">
       <div>
         <span class="eyebrow">Pesquisa rápida</span>
-        <h1>Você viu nossa campanha <em>nas ruas?</em></h1>
-        <p class="lead">Vamos mostrar as fotos dos <b id="nlocais">11</b> pontos onde a campanha <b>Rede D'Or Pernambuco</b> está. Para cada um, é só tocar na opção que mais combina com você.</p>
+        <h1>Você viu nossa campanha <em>por aí?</em></h1>
+        <p class="lead">São <b id="nlocais">12</b> perguntas rápidas sobre onde a campanha <b>Rede D'Or Pernambuco</b> apareceu: outdoors, painéis, shoppings e rádio. Em cada uma, é só tocar na opção que mais combina com você.</p>
         <div class="facts">
           <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Menos de 1 minuto</span>
           <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>100% anônima</span>
-          <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Um toque por local</span>
+          <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Um toque por pergunta</span>
         </div>
       </div>
       <div class="profiles-col">
@@ -233,6 +253,13 @@ const ICONS = {
   nao_vi_freq:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.6 5.1A10 10 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-2.2 3.1M6.6 6.6A17 17 0 0 0 2 12s3.6 7 10 7a9.6 9.6 0 0 0 5.4-1.6M3 3l18 18"/></svg>',
   nao_vi_rar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M2 12s3.6-7 10-7c1.6 0 3 .4 4.2 1M22 12s-3.6 7-10 7c-1.6 0-3-.4-4.2-1" stroke-dasharray="2 3"/></svg>',
   nao_passo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>',
+  sim_vi:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  nao_vi:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg>',
+  mute:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5L6 9H3v6h3l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/></svg>',
+  radio:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M7 9l10-5"/><circle cx="15.5" cy="15" r="2.5"/><path d="M6.5 13h3M6.5 17h3"/></svg>',
+  wave:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 10v4M8 7v10M12 4v16M16 8v8M20 11v2"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg>',
+  pause:'<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6.5" y="5" width="4" height="14" rx="1"/><rect x="13.5" y="5" width="4" height="14" rx="1"/></svg>',
   pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>',
   zoom:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
   arr:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>'
@@ -262,10 +289,41 @@ $("#profiles").addEventListener("click", e=>{
 /* ---- Perguntas ---- */
 $("#prog").innerHTML = L.map(()=>"<i></i>").join("");
 
-function preload(i){ [i, i+1].forEach(k=>{ if(L[k]) L[k].fotos.forEach(f=>{ const im=new Image(); im.src=`img/${f}.jpg`; }); }); }
+function preload(i){ [i, i+1].forEach(k=>{ if(L[k]) (L[k].fotos||[]).forEach(f=>{ const im=new Image(); im.src=`img/${f}.jpg`; }); }); }
+
+function audioHtml(loc){
+  return `<div class="radio">
+    <span class="chip">${loc.tipo}</span>
+    <div class="r-ico">${ICONS.radio}</div>
+    ${loc.audios.map((a,i)=>`<div class="ap" data-i="${i}">
+      <button class="ap-btn" aria-label="Tocar ${a.nome}">${ICONS.play}</button>
+      <div class="ap-body"><div class="ap-top"><b>${a.nome}</b><span class="ap-t">0:00</span></div>
+      <div class="ap-bar"><i></i></div></div>
+      <audio preload="metadata" src="audio/${a.arquivo}.mp3"></audio>
+    </div>`).join("")}
+  </div>`;
+}
+function fmt(t){ t=Math.max(0,Math.floor(t||0)); return Math.floor(t/60)+":"+String(t%60).padStart(2,"0"); }
+function stopAudio(){ document.querySelectorAll("#q audio").forEach(a=>{ try{ a.pause(); }catch(e){} }); }
+function bindAudio(q){
+  q.querySelectorAll(".ap").forEach(ap=>{
+    const au = ap.querySelector("audio"), btn = ap.querySelector(".ap-btn"), bar = ap.querySelector(".ap-bar"), fill = bar.querySelector("i"), t = ap.querySelector(".ap-t");
+    const upd = ()=>{ fill.style.width = (au.duration ? au.currentTime/au.duration*100 : 0)+"%"; t.textContent = au.paused && !au.currentTime ? fmt(au.duration) : fmt(au.currentTime)+" / "+fmt(au.duration); };
+    au.addEventListener("loadedmetadata", upd); au.addEventListener("timeupdate", upd);
+    au.addEventListener("play", ()=>{ ap.classList.add("on"); btn.innerHTML = ICONS.pause; });
+    au.addEventListener("pause", ()=>{ ap.classList.remove("on"); btn.innerHTML = ICONS.play; });
+    au.addEventListener("ended", ()=>{ au.currentTime = 0; upd(); });
+    btn.addEventListener("click", ()=>{
+      if(au.paused){ q.querySelectorAll("audio").forEach(o=>{ if(o!==au) o.pause(); }); au.play().catch(()=>{}); } else au.pause();
+    });
+    bar.addEventListener("click", e=>{ if(!au.duration) return; const b = bar.getBoundingClientRect(); au.currentTime = (e.clientX-b.left)/b.width*au.duration; });
+  });
+}
 
 function renderQ(dir){
+  stopAudio();
   const loc = L[st.idx], cur = st.respostas[loc.id];
+  const rot = loc.rotulos || {};
   $("#count").textContent = `${st.idx+1}/${L.length}`;
   [...$("#prog").children].forEach((el,i)=>{ el.className = i<st.idx ? "done" : i===st.idx ? "cur" : ""; });
   $("#back").disabled = false;
@@ -273,26 +331,30 @@ function renderQ(dir){
   R.forEach((r,i)=>{
     if(lastG && r.grupo!==lastG) optsHtml += '<div class="sep"></div>';
     lastG = r.grupo;
-    optsHtml += `<button class="opt${cur===r.id?" sel":""}" data-r="${r.id}" data-g="${r.grupo}"><span class="oi">${ICONS[r.id]||""}</span><span>${r.label}</span><span class="k">${i+1}</span></button>`;
+    optsHtml += `<button class="opt${cur===r.id?" sel":""}" data-r="${r.id}" data-g="${r.grupo}"><span class="oi">${(loc.audios && r.id==="nao_passo") ? ICONS.mute : (ICONS[r.id]||"")}</span><span>${rot[r.id]||r.label}</span><span class="k">${i+1}</span></button>`;
   });
-  const q = $("#q");
-  q.innerHTML = `
+  const fotos = loc.fotos || [];
+  const media = loc.audios ? audioHtml(loc) : `
     <div class="photo">
-      <div class="gal" id="gal">${loc.fotos.map((f,i)=>`<img src="img/${f}.jpg" alt="Foto ${i+1} — ${loc.titulo}" ${i?'loading="lazy"':''}>`).join("")}</div>
+      <div class="gal" id="gal">${fotos.map((f,i)=>`<img src="img/${f}.jpg" alt="Foto ${i+1} — ${loc.titulo}" ${i?'loading="lazy"':''}>`).join("")}</div>
       <span class="chip">${loc.tipo}</span>
       <button class="zoom" aria-label="Ampliar foto">${ICONS.zoom}</button>
-      ${loc.fotos.length>1?`<div class="dots">${loc.fotos.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:""}
-    </div>
+      ${fotos.length>1?`<div class="dots">${fotos.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:""}
+    </div>`;
+  const q = $("#q");
+  q.innerHTML = `${media}
     <div class="info">
       <h2>${loc.titulo}</h2>
-      <p class="det">${ICONS.pin}${loc.detalhe}</p>
-      <p class="qtext">Você viu a campanha neste local?</p>
+      <p class="det">${loc.audios ? ICONS.wave : ICONS.pin}${loc.detalhe}</p>
+      ${loc.lista ? `<div class="lista">${loc.lista.map(x=>`<span>${x}</span>`).join("")}</div>` : ""}
+      <p class="qtext">${loc.pergunta || "Você viu a campanha neste local?"}</p>
       <div class="opts">${optsHtml}</div>
     </div>`;
   q.classList.remove("anim-in","anim-back"); void q.offsetWidth;
   q.classList.add(dir==="back"?"anim-back":"anim-in");
+  if(loc.audios) bindAudio(q);
   const gal = $("#gal");
-  if(loc.fotos.length>1){
+  if(gal && fotos.length>1){
     gal.addEventListener("scroll", ()=>{
       const n = Math.round(gal.scrollLeft / gal.clientWidth);
       q.querySelectorAll(".dots i").forEach((d,i)=>d.classList.toggle("on", i===n));
@@ -304,7 +366,7 @@ function renderQ(dir){
 function answer(rid){
   if(busy) return; busy = true;
   const loc = L[st.idx];
-  st.respostas[loc.id] = rid; save();
+  st.respostas[loc.id] = rid; save(); stopAudio();
   document.querySelectorAll(".opt").forEach(o=>o.classList.toggle("sel", o.dataset.r===rid));
   if(navigator.vibrate) try{ navigator.vibrate(8); }catch(e){}
   setTimeout(()=>{
@@ -327,7 +389,7 @@ $("#lb").addEventListener("click", ()=>$("#lb").classList.remove("on"));
 $("#back").addEventListener("click", goBack);
 function goBack(){
   if(busy) return;
-  if(st.idx===0){ show("welcome"); return; }
+  if(st.idx===0){ stopAudio(); show("welcome"); return; }
   st.idx--; save(); renderQ("back");
 }
 document.addEventListener("keydown", e=>{
