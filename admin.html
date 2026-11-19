@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#002755">
+<meta name="robots" content="noindex,nofollow">
+<title>Resultados · Pesquisa Mídia OFF · Rede D'Or PE</title>
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#003BA5; --navy:#002755; --navy2:#001A3D; --gold:#CC9F75; --cyan:#5BC8F0;
+  --ink:#0E1B33; --ink2:#3A4458; --muted:#6B7487; --line:#E3E8F0; --grid:#EDF0F5; --bg:#F3F5F9; --card:#fff;
+  /* Escala de percepção (validada: CVD ΔE ≥ 17) — azul = viu, laranja = passou e não viu, cinza = não passa */
+  --c-vi_varias:#1747B8; --c-vi_uma:#7FA6F0; --c-nao_vi_rar:#E3A35C; --c-nao_vi_freq:#B5651D; --c-nao_passo:#A7AEBB;
+  --c-medico:#1747B8; --c-gestor:#C8873F;
+  --r-big:24px; --r-small:6px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:"Gotham","Montserrat",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;font-size:14px}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+.hide{display:none!important}
+
+/* ---------- LOGIN ---------- */
+#login{min-height:100dvh;display:grid;place-items:center;padding:24px;background:linear-gradient(160deg,var(--blue) 0%,var(--navy) 60%,var(--navy2) 100%);position:relative;overflow:hidden}
+#login .mark{position:absolute;right:-10%;top:-12%;width:60%;max-width:560px;opacity:.08}
+.lcard{position:relative;width:100%;max-width:400px;background:#fff;border-radius:var(--r-small) 32px var(--r-small) 32px;padding:32px 28px;box-shadow:0 20px 60px rgba(0,10,40,.35)}
+.lcard img{height:20px;width:auto;display:block;margin-bottom:26px}
+.lcard h1{font-size:22px;font-weight:800;color:var(--navy);margin:0 0 4px}
+.lcard p{color:var(--muted);margin:0 0 22px;font-size:13.5px}
+.lcard label{display:block;font-size:12px;font-weight:700;color:var(--ink2);margin:0 0 6px;letter-spacing:.03em}
+.lcard input{width:100%;height:46px;border:1.5px solid var(--line);border-radius:10px;padding:0 14px;margin-bottom:14px;font-size:15px;outline:none}
+.lcard input:focus{border-color:var(--blue)}
+.primary{width:100%;height:48px;border-radius:12px;background:var(--blue);color:#fff;font-weight:700;font-size:15px}
+.primary:disabled{opacity:.6}
+.lerr{color:#B3261E;font-size:13px;min-height:18px;margin-top:10px}
+
+/* ---------- HEADER ---------- */
+header{background:linear-gradient(120deg,var(--navy) 0%,var(--blue) 100%);color:#fff;position:relative;overflow:hidden}
+header .mark{position:absolute;right:2%;top:-60%;height:240%;opacity:.07;pointer-events:none}
+.hwrap{position:relative;max-width:1240px;margin:0 auto;padding:22px 24px 26px}
+.htop{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.htop img{height:18px;width:auto}
+.htop .sp{flex:1}
+.hbtn{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 13px;border-radius:10px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);color:#fff;font-weight:600;font-size:13px;white-space:nowrap}
+.hbtn:hover{background:rgba(255,255,255,.2)}
+.hbtn svg{width:16px;height:16px}
+.hbtn.solid{background:#fff;color:var(--navy);border-color:#fff}
+.htitle{margin-top:26px}
+.htitle .eb{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.htitle h1{font-size:clamp(22px,3.4vw,32px);font-weight:800;margin:6px 0 4px}
+.htitle p{margin:0;color:#C8D6EF;font-size:13px}
+
+/* ---------- LAYOUT ---------- */
+main{max-width:1240px;margin:0 auto;padding:18px 24px 60px}
+.filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.seg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:12px;padding:3px}
+.seg button{height:34px;padding:0 14px;border-radius:9px;font-weight:600;font-size:13px;color:var(--ink2)}
+.seg button.on{background:var(--navy);color:#fff}
+.flabel{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-right:2px}
+.share{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.lbtn{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 13px;border-radius:10px;background:#fff;border:1px solid var(--line);font-weight:600;font-size:13px;color:var(--navy)}
+.lbtn svg{width:16px;height:16px}
+.lbtn:hover{border-color:#B8C6E0}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px}
+.kpi{background:var(--card);border-radius:var(--r-small) var(--r-big) var(--r-small) var(--r-big);padding:18px 18px 16px;border:1px solid var(--line);position:relative;overflow:hidden}
+.kpi .l{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.kpi .v{font-size:34px;font-weight:800;color:var(--navy);margin:8px 0 4px;font-variant-numeric:tabular-nums;line-height:1}
+.kpi .v.sm{font-size:18px;line-height:1.2;margin:10px 0 6px}
+.kpi .s{font-size:12.5px;color:var(--ink2)}
+.kpi:after{content:"";position:absolute;left:18px;top:0;width:28px;height:3px;border-radius:0 0 3px 3px;background:var(--cyan)}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 20px 18px;margin-bottom:12px;break-inside:avoid}
+.card h2{font-size:15.5px;font-weight:800;color:var(--navy);margin:0}
+.card .sub{font-size:12.5px;color:var(--muted);margin:3px 0 14px}
+.chead{display:flex;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.chead .sp{flex:1}
+.mini-seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;padding:2px}
+.mini-seg button{height:28px;padding:0 10px;border-radius:7px;font-size:12px;font-weight:600;color:var(--muted)}
+.mini-seg button.on{background:#EEF2F9;color:var(--navy)}
+
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0 0 14px;font-size:12.5px;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+
+/* stacked rows */
+.srows{display:grid;gap:10px}
+.srow{display:grid;grid-template-columns:minmax(150px,280px) 1fr 74px;gap:14px;align-items:center}
+.sname{font-size:13px;font-weight:600;color:var(--ink);line-height:1.25}
+.sname small{display:block;font-weight:500;color:var(--muted);font-size:11.5px;margin-top:1px}
+.sbar{display:flex;gap:2px;height:22px}
+.seg-b{height:100%;min-width:0;position:relative;outline:none;transition:filter .12s}
+.seg-b:first-child{border-radius:4px 0 0 4px}
+.seg-b:last-child{border-radius:0 4px 4px 0}
+.seg-b:only-child{border-radius:4px}
+.seg-b:hover,.seg-b:focus-visible{filter:brightness(1.12) saturate(1.1)}
+.seg-b em{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11px;font-weight:700;color:#fff;pointer-events:none}
+.seg-b.lt em{color:var(--navy)}
+.sval{text-align:right;font-size:13px;color:var(--muted)}
+.sval b{display:block;font-size:16px;font-weight:800;color:var(--navy);font-variant-numeric:tabular-nums}
+.empty-bar{height:22px;border-radius:4px;background:repeating-linear-gradient(45deg,#F1F3F7,#F1F3F7 6px,#E8ECF2 6px,#E8ECF2 12px)}
+
+/* grouped hbars */
+.grows{display:grid;gap:12px}
+.grow{display:grid;grid-template-columns:minmax(130px,220px) 1fr;gap:12px;align-items:center}
+.gbars{display:grid;gap:2px}
+.gline{display:flex;align-items:center;gap:8px;height:12px}
+.gfill{height:12px;border-radius:0 4px 4px 0;min-width:2px;outline:none}
+.gfill:hover,.gfill:focus-visible{filter:brightness(1.12)}
+.gline span{font-size:11.5px;font-weight:700;color:var(--ink2);font-variant-numeric:tabular-nums}
+
+/* columns */
+.cols{display:flex;align-items:flex-end;gap:6px;height:180px;border-bottom:1px solid var(--line);padding:18px 0 0;position:relative}
+.col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
+.col .bar{width:100%;max-width:24px;border-radius:4px 4px 0 0;background:var(--blue);outline:none;min-height:0}
+.col .bar:hover,.col .bar:focus-visible{filter:brightness(1.2)}
+.col .top{font-size:11px;font-weight:700;color:var(--ink2);margin-bottom:4px;font-variant-numeric:tabular-nums}
+.xl{display:flex;gap:6px;margin-top:6px}
+.xl span{flex:1;text-align:center;font-size:11px;color:var(--muted);min-width:0;white-space:nowrap;overflow:hidden;text-overflow:clip}
+
+/* table */
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12.5px;font-variant-numeric:tabular-nums}
+th,td{padding:9px 10px;text-align:right;border-bottom:1px solid var(--grid);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal;min-width:200px}
+th{font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line);vertical-align:bottom;white-space:normal;max-width:120px;line-height:1.35}
+th i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px}
+td b{color:var(--navy)}
+tfoot td{font-weight:800;color:var(--navy);border-top:1px solid var(--line);border-bottom:0}
+.defs{font-size:12px;color:var(--muted);line-height:1.6;margin:14px 0 0}
+.defs b{color:var(--ink2)}
+
+#tip{position:fixed;z-index:30;pointer-events:none;background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 11px;box-shadow:0 8px 24px rgba(0,20,60,.16);font-size:12px;max-width:260px;opacity:0;transition:opacity .08s}
+#tip.on{opacity:1}
+#tip .tv{font-size:15px;font-weight:800;color:var(--navy)}
+#tip .tk{display:flex;align-items:center;gap:7px;color:var(--ink2);margin-top:2px}
+#tip .tk i{width:12px;height:3px;border-radius:2px;display:inline-block}
+#tip .tl{color:var(--muted);margin-top:3px}
+
+.state{padding:60px 20px;text-align:center;color:var(--muted)}
+.state b{display:block;font-size:17px;color:var(--navy);margin-bottom:6px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);background:var(--navy);color:#fff;padding:11px 16px;border-radius:10px;font-weight:600;font-size:13px;opacity:0;transition:all .2s;z-index:40}
+.toast.on{opacity:1;transform:translateX(-50%)}
+.demo{background:var(--gold);color:var(--navy2);text-align:center;font-weight:700;font-size:12.5px;padding:7px}
+.print-only{display:none}
+
+@media (max-width:980px){
+  .kpis{grid-template-columns:1fr 1fr}
+  .grid2{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .hwrap,main{padding-left:14px;padding-right:14px}
+  .htop .hbtn span{display:none}
+  .htop .hbtn{padding:0 10px}
+  .kpi .v{font-size:28px}
+  .srow{grid-template-columns:1fr 64px;gap:4px 10px}
+  .sname{grid-column:1/-1}
+  .grow{grid-template-columns:1fr}
+  .share{margin-left:0;width:100%}
+}
+@media print{
+  @page{size:A4 portrait;margin:12mm}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{background:#fff;font-size:12px}
+  .noprint,.filters .share,.mini-seg,.hbtn,#tip,.toast{display:none!important}
+  .print-only{display:block}
+  header{border-radius:12px}
+  .hwrap{padding:16px 18px}
+  .htitle{margin-top:12px}
+  main{padding:10px 0 0}
+  .kpis{grid-template-columns:repeat(4,1fr)}
+  .grid2{grid-template-columns:1fr 1fr}
+  .card{border-color:#DDE3EC;padding:14px}
+  .srow{grid-template-columns:200px 1fr 60px}
+  .page-break{break-before:page}
+  .card{break-inside:auto}
+  .srow,.grow,.kpi,.colwrap{break-inside:avoid}
+  .seg,.flabel{display:none!important}
+  .tablewrap{overflow:visible}
+  table{font-size:9px}
+  th,td{padding:5px 4px}
+  th{font-size:8px;max-width:70px}
+  th:first-child,td:first-child{min-width:120px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<section id="login" class="hide">
+  <img class="mark" src="assets/dsymbol_white.png" alt="">
+  <form class="lcard" id="lform" autocomplete="on">
+    <img src="assets/logo_blue.png" alt="Rede D'Or">
+    <h1>Resultados da pesquisa</h1>
+    <p>Mídia OFF · Rede D'Or Pernambuco. Acesso restrito ao Marketing.</p>
+    <label for="em">E-mail</label>
+    <input id="em" type="email" autocomplete="username" required>
+    <label for="pw">Senha</label>
+    <input id="pw" type="password" autocomplete="current-password" required>
+    <button class="primary" id="lbtn" type="submit">Entrar</button>
+    <div class="lerr" id="lerr"></div>
+  </form>
+</section>
+
+<!-- DASHBOARD -->
+<section id="dash" class="hide">
+  <div class="demo hide" id="demoBar">MODO DEMONSTRAÇÃO — dados salvos só neste navegador. Desative MODO_DEMO no config.js para usar o Supabase.</div>
+  <header>
+    <img class="mark" src="assets/dsymbol_white.png" alt="">
+    <div class="hwrap">
+      <div class="htop">
+        <img src="assets/logo_white.png" alt="Rede D'Or">
+        <div class="sp"></div>
+        <button class="hbtn" id="bRefresh" title="Atualizar dados"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 1 0-2.3 5.7M20 4v7h-7"/></svg><span>Atualizar</span></button>
+        <button class="hbtn" id="bXlsx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 13l6 5M15 13l-6 5"/></svg><span>Excel</span></button>
+        <button class="hbtn solid" id="bPdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M7 14h10v7H7z"/></svg><span>PDF</span></button>
+        <button class="hbtn" id="bOut" title="Sair"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3M10 17l-5-5 5-5M5 12h11"/></svg></button>
+      </div>
+      <div class="htitle">
+        <div class="eb">Pesquisa de recall · Mídia OFF</div>
+        <h1>Rede D'Or Pernambuco nas ruas</h1>
+        <p id="updated">—</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="filters">
+      <span class="flabel">Perfil</span>
+      <div class="seg" id="fPerfil">
+        <button data-v="todos" class="on">Todos</button>
+        <button data-v="medico">Médicos</button>
+        <button data-v="gestor">Gestores</button>
+      </div>
+      <span class="print-only" id="printFilter" style="font-weight:700;color:var(--navy)"></span>
+      <div class="share noprint">
+        <button class="lbtn" id="bCopy"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>Copiar link da pesquisa</button>
+        <button class="lbtn" id="bWa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 9.5c.3 2.4 2.1 4.3 4.6 4.9l1.3-1.2 2 1-.4 1.6c-3.8.5-8-3.3-8-7.6l1.6-.5 1 2z"/></svg>Enviar no WhatsApp</button>
+      </div>
+    </div>
+
+    <div id="content"></div>
+  </main>
+</section>
+
+<div id="tip"></div>
+<div class="toast" id="toast"></div>
+
+<script src="config.js"></script>
+<script>
+(function(){
+const C = window.PESQUISA, L = C.LOCAIS, R = C.RESPOSTAS;
+const RL = Object.fromEntries(R.map(r=>[r.id,r]));
+const PL = Object.fromEntries(C.PERFIS.map(p=>[p.id,p.label]));
+const SKEY = "pmo_admin_sess";
+const $ = s=>document.querySelector(s);
+const esc = s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pct = (a,b)=> b ? a/b : null;
+const fp = (v,d=0)=> v==null ? "—" : (v*100).toLocaleString("pt-BR",{maximumFractionDigits:d,minimumFractionDigits:d})+"%";
+const fn = v=> (v||0).toLocaleString("pt-BR");
+const COLOR = id=>getComputedStyle(document.documentElement).getPropertyValue("--c-"+id).trim();
+const LIGHT = new Set(["vi_uma","nao_vi_rar","nao_passo"]);
+const SURVEY_URL = new URL("./", location.href).href.replace(/admin\.html.*$/,"");
+
+let rows = [], filtro = "todos", ordem = "lembranca", sess = null;
+
+/* ================= AUTH ================= */
+function getSess(){ try{ return JSON.parse(sessionStorage.getItem(SKEY)||"null"); }catch(e){ return null; } }
+function setSess(s){ sess = s; try{ s ? sessionStorage.setItem(SKEY, JSON.stringify(s)) : sessionStorage.removeItem(SKEY); }catch(e){} }
+
+async function authToken(body, grant){
+  const r = await fetch(`${C.SUPABASE_URL}/auth/v1/token?grant_type=${grant}`, {
+    method:"POST", headers:{ apikey:C.SUPABASE_KEY, "Content-Type":"application/json" }, body:JSON.stringify(body)
+  });
+  const j = await r.json().catch(()=>({}));
+  if(!r.ok) throw new Error(j.error_description || j.msg || j.message || "Falha no login");
+  return { access_token:j.access_token, refresh_token:j.refresh_token, exp: Date.now() + (j.expires_in||3600)*1000, email:j.user && j.user.email };
+}
+async function ensureFresh(){
+  if(sess && sess.exp - Date.now() < 60000){
+    try{ setSess(await authToken({refresh_token:sess.refresh_token}, "refresh_token")); }
+    catch(e){ setSess(null); throw e; }
+  }
+}
+
+$("#lform").addEventListener("submit", async e=>{
+  e.preventDefault();
+  $("#lbtn").disabled = true; $("#lerr").textContent = "";
+  try{
+    setSess(await authToken({ email:$("#em").value.trim(), password:$("#pw").value }, "password"));
+    await openDash();
+  }catch(err){
+    $("#lerr").textContent = /invalid/i.test(err.message) ? "E-mail ou senha incorretos." : err.message;
+  }finally{ $("#lbtn").disabled = false; }
+});
+$("#bOut").addEventListener("click", ()=>{ setSess(null); location.reload(); });
+
+/* ================= DADOS ================= */
+async function fetchRows(){
+  if(C.MODO_DEMO){ return JSON.parse(localStorage.getItem("pmo_demo_rows")||"[]"); }
+  await ensureFresh();
+  const out = []; const page = 1000;
+  for(let from=0; ; from+=page){
+    const r = await fetch(`${C.SUPABASE_URL}/rest/v1/${C.TABELA}?select=id,created_at,perfil,respostas,duracao_seg,dispositivo&order=created_at.asc`, {
+      headers:{ apikey:C.SUPABASE_KEY, Authorization:"Bearer "+sess.access_token, Range:`${from}-${from+page-1}`, "Range-Unit":"items" }
+    });
+    if(r.status===401){ setSess(null); location.reload(); return []; }
+    if(!r.ok) throw new Error("Erro ao carregar ("+r.status+")");
+    const j = await r.json(); out.push(...j);
+    if(j.length < page) break;
+  }
+  return out;
+}
+
+async function load(){
+  $("#content").innerHTML = '<div class="state"><b>Carregando…</b></div>';
+  try{
+    rows = await fetchRows();
+    const now = new Date();
+    $("#updated").textContent = `${fn(rows.length)} respostas · atualizado em ${now.toLocaleDateString("pt-BR")} às ${now.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}`;
+    render();
+  }catch(err){
+    $("#content").innerHTML = `<div class="state"><b>Não foi possível carregar os dados</b>${esc(err.message)}<br><br>Confira se o SQL do arquivo <code>supabase.sql</code> foi executado e se seu e-mail está na tabela de administradores.</div>`;
+  }
+}
+async function openDash(){
+  $("#login").classList.add("hide"); $("#dash").classList.remove("hide");
+  if(C.MODO_DEMO) $("#demoBar").classList.remove("hide");
+  await load();
+}
+$("#bRefresh").addEventListener("click", load);
+
+/* ================= CÁLCULOS ================= */
+function compute(list){
+  const per = L.map(loc=>{
+    const c = Object.fromEntries(R.map(r=>[r.id,0])); let n=0;
+    list.forEach(row=>{ const a = row.respostas && row.respostas[loc.id]; if(a && a in c){ c[a]++; n++; } });
+    const viu = c.vi_varias + c.vi_uma;
+    const exp = n - c.nao_passo;
+    return { loc, c, n, viu, exp, lembranca:pct(viu,exp), alcance:pct(viu,n), exposicao:pct(exp,n) };
+  });
+  const seen = list.map(row=> L.filter(l=>{ const a=row.respostas&&row.respostas[l.id]; return a==="vi_varias"||a==="vi_uma"; }).length);
+  const tv = per.reduce((s,p)=>s+p.viu,0), te = per.reduce((s,p)=>s+p.exp,0);
+  const best = per.filter(p=>p.exp>0).sort((a,b)=>b.lembranca-a.lembranca || b.viu-a.viu)[0];
+  return { per, seen, n:list.length, alguma: pct(seen.filter(x=>x>0).length, list.length), lembranca:pct(tv,te), best,
+           mediaPontos: list.length ? seen.reduce((a,b)=>a+b,0)/list.length : null };
+}
+const byPerfil = p => p==="todos" ? rows : rows.filter(r=>r.perfil===p);
+
+/* ================= RENDER ================= */
+function render(){
+  const list = byPerfil(filtro), S = compute(list);
+  const nMed = rows.filter(r=>r.perfil==="medico").length, nGes = rows.filter(r=>r.perfil==="gestor").length;
+  $("#printFilter").textContent = filtro==="todos" ? "Todos os perfis" : (filtro==="medico"?"Somente médicos":"Somente gestores");
+
+  if(!rows.length){
+    $("#content").innerHTML = `<div class="state"><b>Ainda não há respostas</b>Compartilhe o link da pesquisa: <br><a href="${esc(SURVEY_URL)}" target="_blank">${esc(SURVEY_URL)}</a></div>`;
+    return;
+  }
+
+  let h = `<div class="kpis">
+    <div class="kpi"><div class="l">Respostas</div><div class="v">${fn(S.n)}</div><div class="s">${filtro==="todos" ? `${fn(nMed)} médicos · ${fn(nGes)} gestores` : esc(PL[filtro])}</div></div>
+    <div class="kpi"><div class="l">Viram ao menos 1 ponto</div><div class="v">${fp(S.alguma)}</div><div class="s">Média de ${S.mediaPontos==null?"—":S.mediaPontos.toLocaleString("pt-BR",{maximumFractionDigits:1})} pontos vistos por pessoa</div></div>
+    <div class="kpi"><div class="l">Taxa de lembrança</div><div class="v">${fp(S.lembranca)}</div><div class="s">De quem passa pelos locais, quantos viram</div></div>
+    <div class="kpi"><div class="l">Ponto mais lembrado</div><div class="v sm">${S.best?esc(S.best.loc.titulo):"—"}</div><div class="s">${S.best?`${fp(S.best.lembranca)} de lembrança · ${fn(S.best.exp)} passam por lá`:""}</div></div>
+  </div>`;
+
+  /* -- Percepção por ponto (100% empilhado) -- */
+  const sorted = ordem==="lembranca" ? [...S.per].sort((a,b)=>(b.lembranca??-1)-(a.lembranca??-1)) : S.per;
+  h += `<div class="card">
+    <div class="chead"><div><h2>Como cada ponto foi percebido</h2><div class="sub">Distribuição das respostas por local · à direita, a taxa de lembrança</div></div>
+      <div class="sp"></div>
+      <div class="mini-seg" id="fOrdem"><button data-v="lembranca" class="${ordem==="lembranca"?"on":""}">Mais lembrados</button><button data-v="original" class="${ordem==="original"?"on":""}">Ordem do roteiro</button></div></div>
+    <div class="legend">${R.map(r=>`<span><i style="background:${COLOR(r.id)}"></i>${esc(r.label)}</span>`).join("")}</div>
+    <div class="srows">${sorted.map(p=>`
+      <div class="srow">
+        <div class="sname">${esc(p.loc.titulo)}<small>${esc(p.loc.tipo)} · ${esc(p.loc.detalhe)}</small></div>
+        ${p.n ? `<div class="sbar">${R.filter(r=>p.c[r.id]>0).map(r=>{
+          const v = p.c[r.id]/p.n;
+          return `<div class="seg-b ${LIGHT.has(r.id)?"lt":""}" tabindex="0" style="flex:${p.c[r.id]};background:${COLOR(r.id)}"
+            data-tip='${esc(JSON.stringify({v:fp(v), k:r.label, c:COLOR(r.id), l:`${p.c[r.id]} de ${p.n} respostas · ${p.loc.titulo}`}))}'>${v>=0.12?`<em>${fp(v)}</em>`:""}</div>`;
+        }).join("")}</div>` : `<div class="empty-bar"></div>`}
+        <div class="sval"><b>${fp(p.lembranca)}</b>lembrança</div>
+      </div>`).join("")}
+    </div>
+  </div>`;
+
+  /* -- Médicos x gestores + tipo de mídia -- */
+  const SM = compute(byPerfil("medico")), SG = compute(byPerfil("gestor"));
+  const maxL = 1;
+  const gbar = (val, who, label, extra) => `<div class="gline"><div class="gfill" tabindex="0" style="width:${val==null?0:Math.max(val/maxL*100,0.5)}%;background:${COLOR(who)}"
+      data-tip='${esc(JSON.stringify({v:fp(val), k:PL[who], c:COLOR(who), l:label+extra}))}'></div><span>${fp(val)}</span></div>`;
+  const tipos = [...new Set(L.map(l=>l.tipo))];
+  const byTipo = S0 => tipos.map(t=>{ const ps=S0.per.filter(p=>p.loc.tipo===t); const v=ps.reduce((s,p)=>s+p.viu,0), e=ps.reduce((s,p)=>s+p.exp,0); return {t, l:pct(v,e), e}; });
+  const tM = byTipo(SM), tG = byTipo(SG);
+
+  h += `<div class="grid2">
+    <div class="card">
+      <h2>Lembrança por ponto · médicos x gestores</h2>
+      <div class="sub">Sempre compara os dois perfis, independente do filtro</div>
+      <div class="legend"><span><i style="background:${COLOR("medico")}"></i>Médicos (${fn(SM.n)})</span><span><i style="background:${COLOR("gestor")}"></i>Gestores (${fn(SG.n)})</span></div>
+      <div class="grows">${L.map((loc,i)=>`<div class="grow"><div class="sname">${esc(loc.titulo)}</div><div class="gbars">
+        ${gbar(SM.per[i].lembranca,"medico",loc.titulo,` · ${SM.per[i].viu} de ${SM.per[i].exp} que passam`)}
+        ${gbar(SG.per[i].lembranca,"gestor",loc.titulo,` · ${SG.per[i].viu} de ${SG.per[i].exp} que passam`)}
+      </div></div>`).join("")}</div>
+    </div>
+    <div>
+      <div class="card">
+        <h2>Lembrança por tipo de mídia</h2>
+        <div class="sub">Agrupa os pontos pelo formato da peça</div>
+        <div class="legend"><span><i style="background:${COLOR("medico")}"></i>Médicos</span><span><i style="background:${COLOR("gestor")}"></i>Gestores</span></div>
+        <div class="grows">${tipos.map((t,i)=>`<div class="grow"><div class="sname">${esc(t)}<small>${L.filter(l=>l.tipo===t).length} ponto(s)</small></div><div class="gbars">
+          ${gbar(tM[i].l,"medico",t,` · base: ${tM[i].e} exposições`)}${gbar(tG[i].l,"gestor",t,` · base: ${tG[i].e} exposições`)}</div></div>`).join("")}</div>
+      </div>
+      <div class="card">
+        <h2>Quantos pontos cada pessoa viu</h2>
+        <div class="sub">Número de respondentes por quantidade de pontos vistos${filtro!=="todos"?" · "+esc(PL[filtro]):""}</div>
+        ${columns(Array.from({length:L.length+1},(_,k)=>({x:String(k), y:S.seen.filter(s=>s===k).length, t:`${k} ponto${k===1?"":"s"} visto${k===1?"":"s"}`})), "pessoas")}
+      </div>
+    </div>
+  </div>`;
+
+  /* -- Respostas por dia -- */
+  const days = {};
+  list.forEach(r=>{ const d = new Date(r.created_at); const k = d.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"}); days[k]=(days[k]||0)+1; });
+  const dk = Object.keys(days);
+  h += `<div class="card"><h2>Respostas por dia</h2><div class="sub">Acompanhe o efeito de cada disparo no WhatsApp · tempo médio de resposta: ${tempoMedio(list)}</div>
+    ${columns(dk.map(k=>({x:k,y:days[k],t:k})), "respostas")}</div>`;
+
+  /* -- Tabela -- */
+  const tot = S.per.reduce((a,p)=>{ R.forEach(r=>a.c[r.id]+=p.c[r.id]); a.n+=p.n; a.viu+=p.viu; a.exp+=p.exp; return a; }, {c:Object.fromEntries(R.map(r=>[r.id,0])), n:0, viu:0, exp:0});
+  h += `<div class="card page-break"><h2>Tabela completa</h2><div class="sub">Contagens absolutas por ponto${filtro!=="todos"?" · "+esc(PL[filtro]):""}</div>
+    <div class="tablewrap"><table>
+      <thead><tr><th>Ponto</th>${R.map(r=>`<th><i style="background:${COLOR(r.id)}"></i>${esc(r.label)}</th>`).join("")}<th>Exposição</th><th>Alcance</th><th>Lembrança</th></tr></thead>
+      <tbody>${S.per.map(p=>`<tr><td>${esc(p.loc.titulo)}</td>${R.map(r=>`<td>${p.c[r.id]}</td>`).join("")}<td>${fp(p.exposicao)}</td><td>${fp(p.alcance)}</td><td><b>${fp(p.lembranca)}</b></td></tr>`).join("")}</tbody>
+      <tfoot><tr><td>Todos os pontos</td>${R.map(r=>`<td>${tot.c[r.id]}</td>`).join("")}<td>${fp(pct(tot.exp,tot.n))}</td><td>${fp(pct(tot.viu,tot.n))}</td><td>${fp(pct(tot.viu,tot.exp))}</td></tr></tfoot>
+    </table></div>
+    <p class="defs"><b>Exposição</b> = % que passa pelo local (todos menos “Não passo por esse local”). &nbsp;<b>Alcance</b> = % do total que viu a peça. &nbsp;<b>Lembrança</b> = entre quem passa pelo local, % que viu — é o melhor indicador de impacto da peça, porque não penaliza pontos fora da rota do público.</p>
+  </div>`;
+
+  $("#content").innerHTML = h;
+  document.querySelectorAll("#fOrdem button").forEach(b=>b.onclick=()=>{ ordem=b.dataset.v; render(); });
+}
+
+function columns(data, unit){
+  const max = Math.max(1, ...data.map(d=>d.y));
+  return `<div class="colwrap"><div class="cols">${data.map(d=>`<div class="col">${d.y?`<div class="top">${d.y}</div>`:""}<div class="bar" tabindex="0" style="height:${d.y/max*82}%"
+     data-tip='${esc(JSON.stringify({v:`${d.y} ${unit}`, k:d.t, c:"#003BA5"}))}'></div></div>`).join("")}</div>
+     <div class="xl">${data.map(d=>`<span>${esc(d.x)}</span>`).join("")}</div></div>`;
+}
+function tempoMedio(list){
+  const ds = list.map(r=>r.duracao_seg).filter(x=>x>0 && x<1800).sort((a,b)=>a-b);
+  if(!ds.length) return "—";
+  const m = ds[Math.floor(ds.length/2)];
+  return m < 60 ? `${m}s (mediana)` : `${Math.floor(m/60)}min ${m%60}s (mediana)`;
+}
+
+/* ================= TOOLTIP ================= */
+const tip = $("#tip");
+function showTip(el, x, y){
+  let d; try{ d = JSON.parse(el.dataset.tip); }catch(e){ return; }
+  tip.innerHTML = `<div class="tv"></div><div class="tk"><i></i><span></span></div>${d.l?'<div class="tl"></div>':""}`;
+  tip.querySelector(".tv").textContent = d.v;
+  tip.querySelector(".tk i").style.background = d.c;
+  tip.querySelector(".tk span").textContent = d.k;
+  if(d.l) tip.querySelector(".tl").textContent = d.l;
+  tip.classList.add("on");
+  const w = tip.offsetWidth, hh = tip.offsetHeight;
+  tip.style.left = Math.min(window.innerWidth - w - 8, Math.max(8, x + 14)) + "px";
+  tip.style.top = (y - hh - 12 < 8 ? y + 18 : y - hh - 12) + "px";
+}
+document.addEventListener("pointermove", e=>{
+  const el = e.target.closest && e.target.closest("[data-tip]");
+  if(el) showTip(el, e.clientX, e.clientY); else tip.classList.remove("on");
+});
+document.addEventListener("focusin", e=>{
+  const el = e.target.closest && e.target.closest("[data-tip]");
+  if(el){ const b = el.getBoundingClientRect(); showTip(el, b.left + b.width/2, b.top); }
+});
+document.addEventListener("focusout", ()=>tip.classList.remove("on"));
+document.addEventListener("scroll", ()=>tip.classList.remove("on"), {passive:true});
+
+/* ================= FILTRO ================= */
+$("#fPerfil").addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b) return;
+  filtro = b.dataset.v;
+  document.querySelectorAll("#fPerfil button").forEach(x=>x.classList.toggle("on", x===b));
+  render();
+});
+
+/* ================= EXPORTAÇÕES ================= */
+function toast(m){ const t=$("#toast"); t.textContent=m; t.classList.add("on"); clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove("on"),2200); }
+$("#bPdf").addEventListener("click", ()=>{ tip.classList.remove("on"); window.print(); });
+$("#bCopy").addEventListener("click", async ()=>{
+  try{ await navigator.clipboard.writeText(SURVEY_URL); toast("Link copiado"); }catch(e){ prompt("Copie o link:", SURVEY_URL); }
+});
+$("#bWa").addEventListener("click", ()=>{
+  const msg = `Olá! O Marketing da Rede D'Or Pernambuco está fazendo uma pesquisa rápida (menos de 1 minuto, anônima) sobre a nossa campanha nas ruas. Pode responder? ${SURVEY_URL}`;
+  window.open("https://wa.me/?text="+encodeURIComponent(msg), "_blank");
+});
+
+function loadXLSX(){
+  return window.XLSX ? Promise.resolve() : new Promise((ok,ko)=>{
+    const s=document.createElement("script"); s.src="assets/xlsx.full.min.js"; s.onload=ok; s.onerror=()=>ko(new Error("Não foi possível carregar o gerador de Excel")); document.head.appendChild(s);
+  });
+}
+$("#bXlsx").addEventListener("click", async ()=>{
+  try{
+    await loadXLSX();
+    const wb = XLSX.utils.book_new();
+    const P = v => v==null ? "" : Math.round(v*1000)/10;
+    // Resumo
+    const res = [["Pesquisa Mídia OFF · Rede D'Or Pernambuco"],["Gerado em", new Date().toLocaleString("pt-BR")],[],
+                 ["Indicador","Todos","Médicos","Gestores"]];
+    const A = compute(rows), M = compute(byPerfil("medico")), G = compute(byPerfil("gestor"));
+    res.push(["Respostas", A.n, M.n, G.n]);
+    res.push(["Viram ao menos 1 ponto (%)", P(A.alguma), P(M.alguma), P(G.alguma)]);
+    res.push(["Média de pontos vistos", ...[A,M,G].map(s=>s.mediaPontos==null?"":Math.round(s.mediaPontos*10)/10)]);
+    res.push(["Taxa de lembrança geral (%)", P(A.lembranca), P(M.lembranca), P(G.lembranca)]);
+    res.push(["Ponto mais lembrado", ...[A,M,G].map(s=>s.best?`${s.best.loc.titulo} (${P(s.best.lembranca)}%)`:"")]);
+    res.push([],["Definições"],["Exposição","% que passa pelo local"],["Alcance","% do total que viu a peça"],["Lembrança","entre quem passa pelo local, % que viu"]);
+    const ws1 = XLSX.utils.aoa_to_sheet(res); ws1["!cols"]=[{wch:32},{wch:34},{wch:34},{wch:34}];
+    XLSX.utils.book_append_sheet(wb, ws1, "Resumo");
+    // Por local
+    const head = ["Perfil","Ponto","Tipo","Detalhe",...R.map(r=>r.label),"Total respostas","Exposição (%)","Alcance (%)","Lembrança (%)"];
+    const pl = [head];
+    [["Todos",A],["Médicos",M],["Gestores",G]].forEach(([nm,S])=>S.per.forEach(p=>pl.push([nm,p.loc.titulo,p.loc.tipo,p.loc.detalhe,...R.map(r=>p.c[r.id]),p.n,P(p.exposicao),P(p.alcance),P(p.lembranca)])));
+    const ws2 = XLSX.utils.aoa_to_sheet(pl); ws2["!cols"]=head.map((_,i)=>({wch:i===1?42:i===3?38:16})); ws2["!autofilter"]={ref:XLSX.utils.encode_range({s:{r:0,c:0},e:{r:pl.length-1,c:head.length-1}})};
+    XLSX.utils.book_append_sheet(wb, ws2, "Por local");
+    // Respostas brutas
+    const raw = [["Nº","Data","Hora","Perfil","Dispositivo","Duração (s)","Pontos vistos",...L.map(l=>l.titulo)]];
+    rows.forEach((r,i)=>{ const d=new Date(r.created_at); const vis=L.filter(l=>{const a=r.respostas&&r.respostas[l.id]; return a==="vi_varias"||a==="vi_uma";}).length;
+      raw.push([i+1,d.toLocaleDateString("pt-BR"),d.toLocaleTimeString("pt-BR"),PL[r.perfil]||r.perfil,r.dispositivo||"",r.duracao_seg||"",vis,...L.map(l=>{const a=r.respostas&&r.respostas[l.id]; return a?(RL[a]?RL[a].label:a):"";})]); });
+    const ws3 = XLSX.utils.aoa_to_sheet(raw); ws3["!cols"]=raw[0].map((_,i)=>({wch:i<7?13:30}));
+    XLSX.utils.book_append_sheet(wb, ws3, "Respostas");
+    XLSX.writeFile(wb, `pesquisa_midia_off_rededor_pe_${new Date().toISOString().slice(0,10)}.xlsx`);
+    toast("Excel gerado");
+  }catch(err){ toast(err.message); }
+});
+
+/* ================= INÍCIO ================= */
+sess = getSess();
+if(C.MODO_DEMO || sess){ openDash(); }
+else { $("#login").classList.remove("hide"); $("#em").focus(); }
+})();
+</script>
+</body>
+</html>

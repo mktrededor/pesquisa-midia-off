@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#002755">
+<title>Você viu nossa campanha? · Rede D'Or Pernambuco</title>
+<meta name="description" content="Pesquisa rápida e anônima sobre a campanha Rede D'Or Pernambuco nas ruas.">
+<meta property="og:title" content="Você viu nossa campanha? · Rede D'Or Pernambuco">
+<meta property="og:description" content="Pesquisa rápida e anônima · menos de 1 minuto">
+<meta property="og:image" content="img/og.jpg">
+<meta name="robots" content="noindex">
+<link rel="icon" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#003BA5; --blue2:#0F4FC4; --navy:#002755; --navy2:#001A3D;
+  --gold:#CC9F75; --cyan:#5BC8F0;
+  --ink:#0E1B33; --muted:#5A6478; --line:#E1E6EF; --bg:#F3F5F9; --card:#fff;
+  --r-big:28px; --r-small:6px;
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{font-family:"Gotham","Montserrat",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;overscroll-behavior-y:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+.screen{display:none;min-height:100dvh}
+.screen.on{display:flex;flex-direction:column}
+
+/* ---------- WELCOME ---------- */
+#welcome{background:linear-gradient(160deg,var(--blue) 0%,var(--navy) 58%,var(--navy2) 100%);color:#fff;position:relative;overflow:hidden}
+#welcome .mark{position:absolute;right:-18%;top:-4%;width:88%;max-width:520px;opacity:.09;pointer-events:none}
+.w-wrap{position:relative;flex:1;display:flex;flex-direction:column;padding:28px 24px calc(24px + var(--safe-b));max-width:560px;width:100%;margin:0 auto}
+.logo{height:22px;width:auto;display:block;align-self:flex-start;object-fit:contain}
+.w-body{margin-top:auto;padding-top:48px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
+.eyebrow:before{content:"";width:22px;height:3px;border-radius:3px;background:var(--cyan)}
+h1{font-size:clamp(30px,8.4vw,44px);line-height:1.06;font-weight:800;margin:14px 0 14px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--gold)}
+.lead{font-size:15.5px;line-height:1.55;color:#D7E2F5;margin:0 0 22px;max-width:440px}
+.facts{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:30px}
+.fact{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.16)}
+.fact svg{width:15px;height:15px;opacity:.9}
+.ask{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#AFC3E6;margin:0 0 12px}
+.profiles{display:grid;gap:12px}
+.pbtn{display:flex;align-items:center;gap:16px;width:100%;text-align:left;padding:18px 18px;background:#fff;color:var(--navy);border-radius:var(--r-small) var(--r-big) var(--r-small) var(--r-big);box-shadow:0 10px 30px rgba(0,10,40,.25);transition:transform .15s ease,box-shadow .15s ease}
+.pbtn:active{transform:scale(.98)}
+.pbtn .ic{flex:none;width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#EAF0FB;color:var(--blue)}
+.pbtn .ic svg{width:24px;height:24px}
+.pbtn b{display:block;font-size:17px;font-weight:700}
+.pbtn small{display:block;font-size:12.5px;color:var(--muted);margin-top:2px;font-weight:500}
+.pbtn .arr{margin-left:auto;color:var(--blue);opacity:.6}
+.foot{font-size:11.5px;color:#9DB2D8;margin-top:22px;line-height:1.5;display:flex;gap:8px;align-items:flex-start}
+.foot svg{flex:none;width:14px;height:14px;margin-top:1px}
+
+/* ---------- QUESTION ---------- */
+#quiz{background:var(--bg)}
+.topbar{position:sticky;top:0;z-index:5;background:rgba(243,245,249,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);padding:12px 16px 10px}
+.tb-row{display:flex;align-items:center;gap:12px;max-width:1080px;margin:0 auto}
+.back{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:var(--navy);background:#fff;border:1px solid var(--line)}
+.back:disabled{opacity:.35}
+.back svg{width:20px;height:20px}
+.prog{flex:1;display:flex;gap:4px}
+.prog i{flex:1;height:5px;border-radius:5px;background:#D6DDEA;transition:background .25s}
+.prog i.done{background:var(--blue)}
+.prog i.cur{background:var(--cyan)}
+.count{font-size:13px;font-weight:700;color:var(--navy);min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
+.q-wrap{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:6px 16px calc(20px + var(--safe-b))}
+.q{display:grid;gap:16px}
+.q.anim-in{animation:in .32s cubic-bezier(.2,.8,.2,1)}
+.q.anim-back{animation:inback .32s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+@keyframes inback{from{opacity:0;transform:translateX(-26px)}to{opacity:1;transform:none}}
+
+.photo{position:relative;border-radius:var(--r-small) var(--r-big) var(--r-small) var(--r-big);overflow:hidden;background:#C9D3E3;box-shadow:0 8px 24px rgba(0,30,80,.12)}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.gal::-webkit-scrollbar{display:none}
+.gal img{flex:none;width:100%;aspect-ratio:16/10;object-fit:cover;scroll-snap-align:center;display:block;cursor:zoom-in}
+.dots{position:absolute;left:0;right:0;bottom:10px;display:flex;justify-content:center;gap:6px;pointer-events:none}
+.dots i{width:7px;height:7px;border-radius:7px;background:rgba(255,255,255,.55);transition:all .2s}
+.dots i.on{width:18px;background:#fff}
+.zoom{position:absolute;right:10px;top:10px;width:34px;height:34px;border-radius:10px;background:rgba(0,26,61,.55);color:#fff;display:grid;place-items:center;backdrop-filter:blur(4px)}
+.zoom svg{width:18px;height:18px}
+.chip{position:absolute;left:10px;top:10px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:6px 10px;border-radius:8px;background:var(--navy);color:#fff}
+
+.info h2{font-size:clamp(19px,5.2vw,24px);line-height:1.2;font-weight:800;color:var(--navy);margin:2px 0 4px}
+.info .det{display:flex;align-items:center;gap:6px;font-size:13.5px;color:var(--muted);font-weight:500;margin:0}
+.info .det svg{width:15px;height:15px;color:var(--blue);flex:none}
+.qtext{font-size:13px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--blue);margin:16px 0 10px}
+
+.opts{display:grid;gap:8px}
+.opt{display:flex;align-items:center;gap:13px;width:100%;min-height:54px;padding:10px 14px;text-align:left;background:#fff;border:1.5px solid var(--line);border-radius:14px;font-size:15px;font-weight:600;color:var(--ink);transition:border-color .15s,background .15s,transform .1s}
+.opt:active{transform:scale(.985)}
+.opt .oi{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center}
+.opt .oi svg{width:18px;height:18px}
+.opt[data-g="viu"] .oi{background:#E6EEFC;color:var(--blue)}
+.opt[data-g="nao_viu"] .oi{background:#F8EEE3;color:#9A6634}
+.opt[data-g="nao_passa"] .oi{background:#EEF0F4;color:#6B7487}
+.opt .k{margin-left:auto;font-size:11px;font-weight:700;color:#A3ACBD;border:1px solid var(--line);border-radius:6px;padding:2px 6px;display:none}
+.opt.sel{border-color:var(--blue);background:#EEF3FD}
+.opt.sel .oi{background:var(--blue);color:#fff}
+.sep{height:1px;background:var(--line);margin:4px 2px}
+@media (hover:hover) and (pointer:fine){.opt:hover{border-color:#A9BDE3}.opt .k{display:inline-block}}
+
+/* ---------- STATUS SCREENS ---------- */
+.status{background:linear-gradient(160deg,var(--blue) 0%,var(--navy) 60%,var(--navy2) 100%);color:#fff;position:relative;overflow:hidden}
+.status .mark{position:absolute;left:-20%;bottom:-10%;width:90%;max-width:520px;opacity:.08;pointer-events:none}
+.s-wrap{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:32px 26px calc(32px + var(--safe-b));max-width:560px;width:100%;margin:0 auto}
+.s-wrap .logo{position:absolute;top:28px;left:26px}
+.badge{width:64px;height:64px;border-radius:var(--r-small) 22px var(--r-small) 22px;background:var(--cyan);color:var(--navy);display:grid;place-items:center;margin-bottom:22px}
+.badge svg{width:32px;height:32px}
+.s-wrap h1{font-size:clamp(28px,7.6vw,40px)}
+.s-wrap p{color:#D7E2F5;font-size:15.5px;line-height:1.55;margin:0 0 10px;max-width:420px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 20px;border-radius:12px;background:#fff;color:var(--navy);font-weight:700;font-size:15px;margin-top:14px}
+.spin{width:44px;height:44px;border-radius:50%;border:4px solid rgba(255,255,255,.2);border-top-color:var(--cyan);animation:sp 0.9s linear infinite;margin-bottom:22px}
+@keyframes sp{to{transform:rotate(360deg)}}
+
+/* ---------- LIGHTBOX ---------- */
+#lb{position:fixed;inset:0;z-index:50;background:rgba(0,12,30,.94);display:none;align-items:center;justify-content:center;padding:16px}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:100%;border-radius:10px}
+#lb button{position:absolute;top:14px;right:14px;width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.12);color:#fff;display:grid;place-items:center}
+
+/* ---------- DESKTOP ---------- */
+@media (min-width:900px){
+  .w-wrap{max-width:1080px;flex-direction:row;align-items:stretch;gap:64px;padding:40px 56px}
+  .w-wrap .logo{position:absolute;top:40px;left:56px;height:26px}
+  .w-body{margin:auto 0;padding-top:0;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;width:100%}
+  .w-body .profiles-col{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-small) 36px var(--r-small) 36px;padding:28px}
+  h1{font-size:52px}
+  .lead{font-size:17px}
+  #welcome .mark{width:46%;right:-6%;top:-10%}
+  .topbar{padding:18px 32px 14px}
+  .q-wrap{padding:18px 32px 40px;display:flex;align-items:center}
+  .q{grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;width:100%}
+  .info h2{font-size:28px}
+  .opt{min-height:56px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- BOAS-VINDAS + PERFIL -->
+<section id="welcome" class="screen">
+  <img class="mark" src="assets/dsymbol_white.png" alt="">
+  <div class="w-wrap">
+    <img class="logo" src="assets/logo_white.png" alt="Rede D'Or">
+    <div class="w-body">
+      <div>
+        <span class="eyebrow">Pesquisa rápida</span>
+        <h1>Você viu nossa campanha <em>nas ruas?</em></h1>
+        <p class="lead">Vamos mostrar as fotos dos <b id="nlocais">11</b> pontos onde a campanha <b>Rede D'Or Pernambuco</b> está. Para cada um, é só tocar na opção que mais combina com você.</p>
+        <div class="facts">
+          <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Menos de 1 minuto</span>
+          <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>100% anônima</span>
+          <span class="fact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Um toque por local</span>
+        </div>
+      </div>
+      <div class="profiles-col">
+        <p class="ask">Para começar, você é:</p>
+        <div class="profiles" id="profiles"></div>
+        <p class="foot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6z"/></svg>Não pedimos nome, e-mail, telefone nem unidade. Nenhuma resposta pode ser ligada a você.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERGUNTAS -->
+<section id="quiz" class="screen">
+  <div class="topbar">
+    <div class="tb-row">
+      <button class="back" id="back" aria-label="Voltar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <div class="prog" id="prog"></div>
+      <div class="count" id="count">1/11</div>
+    </div>
+  </div>
+  <div class="q-wrap"><div class="q" id="q"></div></div>
+</section>
+
+<!-- ENVIANDO -->
+<section id="sending" class="screen status">
+  <img class="mark" src="assets/dsymbol_white.png" alt="">
+  <div class="s-wrap">
+    <img class="logo" src="assets/logo_white.png" alt="Rede D'Or">
+    <div class="spin"></div>
+    <h1>Enviando…</h1>
+    <p>Só um instante.</p>
+  </div>
+</section>
+
+<!-- ERRO -->
+<section id="error" class="screen status">
+  <img class="mark" src="assets/dsymbol_white.png" alt="">
+  <div class="s-wrap">
+    <img class="logo" src="assets/logo_white.png" alt="Rede D'Or">
+    <div class="badge" style="background:var(--gold)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 8v5M12 16.5v.5"/><circle cx="12" cy="12" r="9"/></svg></div>
+    <h1>Não conseguimos enviar</h1>
+    <p>Parece que a conexão caiu. Suas respostas estão guardadas neste aparelho — é só tentar de novo.</p>
+    <button class="btn" id="retry">Tentar novamente</button>
+  </div>
+</section>
+
+<!-- OBRIGADO -->
+<section id="done" class="screen status">
+  <img class="mark" src="assets/dsymbol_white.png" alt="">
+  <div class="s-wrap">
+    <img class="logo" src="assets/logo_white.png" alt="Rede D'Or">
+    <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h1 id="doneTitle">Obrigado!</h1>
+    <p id="doneText">Sua resposta foi registrada. Ela vai ajudar o Marketing da Rede D'Or Pernambuco a entender o alcance da campanha.</p>
+    <p style="font-size:13px;color:#9DB2D8">Você já pode fechar esta página.</p>
+  </div>
+</section>
+
+<div id="lb" role="dialog" aria-label="Foto ampliada"><img alt=""><button aria-label="Fechar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+
+<script src="config.js"></script>
+<script>
+(function(){
+const C = window.PESQUISA;
+const L = C.LOCAIS, R = C.RESPOSTAS;
+const KEY_DRAFT = "pmo_rascunho_v1", KEY_DONE = "pmo_respondido_v1";
+const $ = s => document.querySelector(s);
+
+const ICONS = {
+  medico:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v5a4 4 0 0 0 8 0V3"/><path d="M10 12v2a5 5 0 0 0 10 0v-2"/><circle cx="20" cy="10" r="2"/></svg>',
+  gestor:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2M3 13h18"/></svg>',
+  vi_varias:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  vi_uma:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>',
+  nao_vi_freq:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.6 5.1A10 10 0 0 1 12 5c6.4 0 10 7 10 7a17 17 0 0 1-2.2 3.1M6.6 6.6A17 17 0 0 0 2 12s3.6 7 10 7a9.6 9.6 0 0 0 5.4-1.6M3 3l18 18"/></svg>',
+  nao_vi_rar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M2 12s3.6-7 10-7c1.6 0 3 .4 4.2 1M22 12s-3.6 7-10 7c-1.6 0-3-.4-4.2-1" stroke-dasharray="2 3"/></svg>',
+  nao_passo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><path d="M9.5 9.5l5 5M14.5 9.5l-5 5"/></svg>',
+  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.3"/></svg>',
+  zoom:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>',
+  arr:'<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>'
+};
+
+let st = { perfil:null, respostas:{}, idx:0, t0:null };
+let busy = false;
+
+function show(id){ document.querySelectorAll(".screen").forEach(s=>s.classList.toggle("on", s.id===id)); window.scrollTo(0,0); }
+function save(){ try{ localStorage.setItem(KEY_DRAFT, JSON.stringify(st)); }catch(e){} }
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY_DRAFT)||"null"); }catch(e){ return null; } }
+
+/* ---- Boas-vindas ---- */
+$("#nlocais").textContent = L.length;
+$("#profiles").innerHTML = C.PERFIS.map(p=>`
+  <button class="pbtn" data-p="${p.id}">
+    <span class="ic">${ICONS[p.id]||ICONS.gestor}</span>
+    <span><b>${p.label}</b><small>${p.id==="medico"?"Corpo clínico":"Liderança e áreas administrativas"}</small></span>
+    <span class="arr">${ICONS.arr}</span>
+  </button>`).join("");
+$("#profiles").addEventListener("click", e=>{
+  const b = e.target.closest(".pbtn"); if(!b) return;
+  st = { perfil:b.dataset.p, respostas:{}, idx:0, t0:Date.now() };
+  save(); preload(0); renderQ("in"); show("quiz");
+});
+
+/* ---- Perguntas ---- */
+$("#prog").innerHTML = L.map(()=>"<i></i>").join("");
+
+function preload(i){ [i, i+1].forEach(k=>{ if(L[k]) L[k].fotos.forEach(f=>{ const im=new Image(); im.src=`img/${f}.jpg`; }); }); }
+
+function renderQ(dir){
+  const loc = L[st.idx], cur = st.respostas[loc.id];
+  $("#count").textContent = `${st.idx+1}/${L.length}`;
+  [...$("#prog").children].forEach((el,i)=>{ el.className = i<st.idx ? "done" : i===st.idx ? "cur" : ""; });
+  $("#back").disabled = false;
+  let optsHtml = "", lastG = null;
+  R.forEach((r,i)=>{
+    if(lastG && r.grupo!==lastG) optsHtml += '<div class="sep"></div>';
+    lastG = r.grupo;
+    optsHtml += `<button class="opt${cur===r.id?" sel":""}" data-r="${r.id}" data-g="${r.grupo}"><span class="oi">${ICONS[r.id]||""}</span><span>${r.label}</span><span class="k">${i+1}</span></button>`;
+  });
+  const q = $("#q");
+  q.innerHTML = `
+    <div class="photo">
+      <div class="gal" id="gal">${loc.fotos.map((f,i)=>`<img src="img/${f}.jpg" alt="Foto ${i+1} — ${loc.titulo}" ${i?'loading="lazy"':''}>`).join("")}</div>
+      <span class="chip">${loc.tipo}</span>
+      <button class="zoom" aria-label="Ampliar foto">${ICONS.zoom}</button>
+      ${loc.fotos.length>1?`<div class="dots">${loc.fotos.map((_,i)=>`<i class="${i?"":"on"}"></i>`).join("")}</div>`:""}
+    </div>
+    <div class="info">
+      <h2>${loc.titulo}</h2>
+      <p class="det">${ICONS.pin}${loc.detalhe}</p>
+      <p class="qtext">Você viu a campanha neste local?</p>
+      <div class="opts">${optsHtml}</div>
+    </div>`;
+  q.classList.remove("anim-in","anim-back"); void q.offsetWidth;
+  q.classList.add(dir==="back"?"anim-back":"anim-in");
+  const gal = $("#gal");
+  if(loc.fotos.length>1){
+    gal.addEventListener("scroll", ()=>{
+      const n = Math.round(gal.scrollLeft / gal.clientWidth);
+      q.querySelectorAll(".dots i").forEach((d,i)=>d.classList.toggle("on", i===n));
+    }, {passive:true});
+  }
+  busy = false;
+}
+
+function answer(rid){
+  if(busy) return; busy = true;
+  const loc = L[st.idx];
+  st.respostas[loc.id] = rid; save();
+  document.querySelectorAll(".opt").forEach(o=>o.classList.toggle("sel", o.dataset.r===rid));
+  if(navigator.vibrate) try{ navigator.vibrate(8); }catch(e){}
+  setTimeout(()=>{
+    if(st.idx < L.length-1){ st.idx++; save(); preload(st.idx+1); renderQ("in"); window.scrollTo({top:0}); }
+    else submit();
+  }, 230);
+}
+
+$("#q").addEventListener("click", e=>{
+  const o = e.target.closest(".opt"); if(o) return answer(o.dataset.r);
+  const z = e.target.closest(".zoom, .gal img");
+  if(z){
+    const gal = $("#gal"); const n = Math.round(gal.scrollLeft / gal.clientWidth);
+    const img = gal.querySelectorAll("img")[n] || gal.querySelector("img");
+    $("#lb img").src = img.src; $("#lb").classList.add("on");
+  }
+});
+$("#lb").addEventListener("click", ()=>$("#lb").classList.remove("on"));
+
+$("#back").addEventListener("click", goBack);
+function goBack(){
+  if(busy) return;
+  if(st.idx===0){ show("welcome"); return; }
+  st.idx--; save(); renderQ("back");
+}
+document.addEventListener("keydown", e=>{
+  if($("#lb").classList.contains("on")){ if(e.key==="Escape") $("#lb").classList.remove("on"); return; }
+  if(!$("#quiz").classList.contains("on")) return;
+  const n = parseInt(e.key,10);
+  if(n>=1 && n<=R.length) answer(R[n-1].id);
+  if(e.key==="ArrowLeft"||e.key==="Backspace"){ e.preventDefault(); goBack(); }
+});
+
+/* ---- Envio ---- */
+async function submit(){
+  show("sending");
+  const row = {
+    perfil: st.perfil,
+    respostas: st.respostas,
+    duracao_seg: Math.round((Date.now()-(st.t0||Date.now()))/1000),
+    dispositivo: window.matchMedia("(pointer:coarse)").matches ? "mobile" : "desktop"
+  };
+  try{
+    if(C.MODO_DEMO){
+      const rows = JSON.parse(localStorage.getItem("pmo_demo_rows")||"[]");
+      rows.push({...row, id:rows.length+1, created_at:new Date().toISOString()});
+      localStorage.setItem("pmo_demo_rows", JSON.stringify(rows));
+      await new Promise(r=>setTimeout(r,500));
+    } else {
+      const res = await fetch(`${C.SUPABASE_URL}/rest/v1/${C.TABELA}`, {
+        method:"POST",
+        headers:{ "apikey":C.SUPABASE_KEY, "Content-Type":"application/json", "Prefer":"return=minimal" },
+        body: JSON.stringify(row)
+      });
+      if(!res.ok) throw new Error(res.status+" "+await res.text());
+    }
+    try{ localStorage.removeItem(KEY_DRAFT); localStorage.setItem(KEY_DONE, new Date().toISOString()); }catch(e){}
+    show("done");
+  }catch(err){
+    console.error(err); show("error");
+  }
+}
+$("#retry").addEventListener("click", submit);
+
+/* ---- Início ---- */
+const params = new URLSearchParams(location.search);
+if(params.has("nova")){ try{ localStorage.removeItem(KEY_DONE); localStorage.removeItem(KEY_DRAFT); }catch(e){} }
+let already = null; try{ already = localStorage.getItem(KEY_DONE); }catch(e){}
+const draft = load();
+if(already){
+  $("#doneTitle").textContent = "Você já respondeu";
+  $("#doneText").textContent = "Obrigado! Sua participação já foi registrada neste aparelho.";
+  show("done");
+} else if(draft && draft.perfil && Object.keys(draft.respostas||{}).length < L.length){
+  st = draft; preload(st.idx); renderQ("in"); show("quiz");
+} else {
+  show("welcome");
+}
+})();
+</script>
+</body>
+</html>
