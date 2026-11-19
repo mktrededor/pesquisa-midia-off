@@ -21,6 +21,8 @@
   --ink:#0E1B33; --muted:#5A6478; --line:#E1E6EF; --bg:#F3F5F9; --card:#fff;
   --r-big:28px; --r-small:6px;
   --safe-b:env(safe-area-inset-bottom,0px);
+  /* espaço livre no rodapé para o selo flutuante "Powered by Netlify" não cobrir conteúdo */
+  --badge:76px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;height:100%}
@@ -32,7 +34,7 @@ button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
 /* ---------- WELCOME ---------- */
 #welcome{background:linear-gradient(160deg,var(--blue) 0%,var(--navy) 58%,var(--navy2) 100%);color:#fff;position:relative;overflow:hidden}
 #welcome .mark{position:absolute;right:-18%;top:-4%;width:88%;max-width:520px;opacity:.09;pointer-events:none}
-.w-wrap{position:relative;flex:1;display:flex;flex-direction:column;padding:28px 24px calc(24px + var(--safe-b));max-width:560px;width:100%;margin:0 auto}
+.w-wrap{position:relative;flex:1;display:flex;flex-direction:column;padding:28px 24px calc(24px + var(--safe-b) + var(--badge));max-width:560px;width:100%;margin:0 auto}
 .logo{height:22px;width:auto;display:block;align-self:flex-start;object-fit:contain}
 .w-body{margin-top:auto;padding-top:48px}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan)}
@@ -67,7 +69,7 @@ h1 em{font-style:normal;color:var(--gold)}
 .prog i.done{background:var(--blue)}
 .prog i.cur{background:var(--cyan)}
 .count{font-size:13px;font-weight:700;color:var(--navy);min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
-.q-wrap{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:6px 16px calc(20px + var(--safe-b))}
+.q-wrap{flex:1;width:100%;max-width:1080px;margin:0 auto;padding:6px 16px calc(20px + var(--safe-b) + var(--badge))}
 .q{display:grid;gap:16px}
 .q.anim-in{animation:in .32s cubic-bezier(.2,.8,.2,1)}
 .q.anim-back{animation:inback .32s cubic-bezier(.2,.8,.2,1)}
@@ -127,7 +129,7 @@ h1 em{font-style:normal;color:var(--gold)}
 /* ---------- STATUS SCREENS ---------- */
 .status{background:linear-gradient(160deg,var(--blue) 0%,var(--navy) 60%,var(--navy2) 100%);color:#fff;position:relative;overflow:hidden}
 .status .mark{position:absolute;left:-20%;bottom:-10%;width:90%;max-width:520px;opacity:.08;pointer-events:none}
-.s-wrap{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:32px 26px calc(32px + var(--safe-b));max-width:560px;width:100%;margin:0 auto}
+.s-wrap{position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:32px 26px calc(32px + var(--safe-b) + var(--badge));max-width:560px;width:100%;margin:0 auto}
 .s-wrap .logo{position:absolute;top:28px;left:26px}
 .badge{width:64px;height:64px;border-radius:var(--r-small) 22px var(--r-small) 22px;background:var(--cyan);color:var(--navy);display:grid;place-items:center;margin-bottom:22px}
 .badge svg{width:32px;height:32px}
@@ -158,6 +160,7 @@ h1 em{font-style:normal;color:var(--gold)}
   .info h2{font-size:28px}
   .opt{min-height:56px}
 }
+@media (max-width:899px){.gal img{aspect-ratio:16/9;max-height:28vh}.radio{padding-top:50px}.q{gap:12px}.qtext{margin:12px 0 8px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
